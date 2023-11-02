@@ -1,0 +1,3 @@
+const Favorites = () => {
+  return <>Favorites</>;
+};
