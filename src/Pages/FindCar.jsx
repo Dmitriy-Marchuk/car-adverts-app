@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import { Section } from "../../src/styles/common/general.styled";
 import SearchForm from "../Components/SearchForm/SearchForm";
+import CarCollection from "../Components/CarCollection/CarCollection";
 
 const FindCar = () => {
   return (
@@ -18,7 +19,7 @@ const FindCar = () => {
           }}
         >
           <SearchForm />
-          <div>WrapperSearch</div>
+          <CarCollection />
         </div>
       </Section>
     </>
