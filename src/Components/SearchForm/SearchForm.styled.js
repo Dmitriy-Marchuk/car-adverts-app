@@ -23,13 +23,15 @@ export const StyledSearchBtn = styled.button`
   color: #fff;
   border: none;
   border-radius: 12px;
-  padding: 10px 20px;
+  padding: 14px 44px;
   cursor: pointer;
-  box-sizing: border-box;
   line-height: 1.28;
-  height: 48px;
-  width: 136px;
+  max-height: 48px;
   margin-left: 18px;
+
+  &:hover {
+    background-color: #0b44cd;
+  }
 `;
 
 export const selectCarStyles = {

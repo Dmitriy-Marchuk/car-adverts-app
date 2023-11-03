@@ -12,6 +12,9 @@ export const NavItem = styled(NavLink)`
   &.active {
     color: rgba(217, 0, 27, 1);
   }
+  &:hover {
+    color: #0b44cd;
+  }
   :hover:not(.active) {
     color: #f6ad55;
     transition: ease-in-out 250ms;

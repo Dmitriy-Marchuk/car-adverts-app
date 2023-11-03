@@ -9,7 +9,14 @@ const FindCar = () => {
         <title>Find Car</title>
       </Helmet>
       <Section>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
           <SearchForm />
           <div>WrapperSearch</div>
         </div>
