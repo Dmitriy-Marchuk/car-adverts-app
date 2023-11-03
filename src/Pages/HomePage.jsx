@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet";
+import HomeHero from "../Components/HomeHero/HomeHero";
 
 const HomePage = () => {
   return (
@@ -6,7 +7,7 @@ const HomePage = () => {
       <Helmet>
         <title>Home</title>
       </Helmet>
-      <div>Тут информация про ХоумПейдж и всякая вступительная дичь</div>
+      <HomeHero />
     </>
   );
 };

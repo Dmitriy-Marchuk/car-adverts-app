@@ -20,3 +20,9 @@ export const NavItem = styled(NavLink)`
     font-size: 20px;
   }
 `;
+
+export const NavWrapper = styled.nav`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+`;

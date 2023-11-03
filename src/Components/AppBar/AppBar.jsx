@@ -1,10 +1,11 @@
 import Navigation from "../Navigation/Navigation";
+import { AppBarWrapper } from "./AppBar.styled";
 
 const AppBar = () => {
   return (
-    <div>
+    <AppBarWrapper>
       <Navigation />
-    </div>
+    </AppBarWrapper>
   );
 };
 
