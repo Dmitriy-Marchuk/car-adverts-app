@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
   margin: 10px 0;
 `;
 
@@ -17,14 +18,19 @@ export const InputWrapper = styled.div`
   flex-direction: row;
 `;
 
-// const StyledButton = styled.button`
-//   /* Здесь вы можете определить стили для кнопки */
-//   background-color: #007bff;
-//   color: #fff;
-//   border: none;
-//   padding: 10px 20px;
-//   cursor: pointer;
-// `;
+export const StyledSearchBtn = styled.button`
+  background-color: #3470ff;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 1.28;
+  height: 48px;
+  width: 136px;
+  margin-left: 18px;
+`;
 
 export const selectCarStyles = {
   control: (base) => ({
@@ -37,6 +43,7 @@ export const selectCarStyles = {
     backgroundColor: "#F7F7FB",
     color: "#121417",
     boxShadow: "none",
+    cursor: "text",
   }),
   placeholder: (base) => ({
     ...base,
@@ -64,6 +71,7 @@ export const selectMonthlyPriceStyles = {
     backgroundColor: "#F7F7FB",
     color: "#121417",
     boxShadow: "none",
+    cursor: "pointer",
   }),
   placeholder: (base) => ({
     ...base,
@@ -79,3 +87,42 @@ export const selectMonthlyPriceStyles = {
     overflow: "hidden",
   }),
 };
+
+export const CarMilageWrapper = styled.div`
+  display: flex;
+`;
+
+export const InputMilageFromStyled = styled.input`
+  width: 160px;
+  height: 48px;
+  border-radius: 14px 0 0 14px;
+  border: 0;
+  border-right: 1px solid rgba(138, 138, 137, 0.2);
+  background-color: #f7f7fb;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.28;
+
+  &::placeholder {
+    color: #121417;
+  }
+`;
+
+export const InputMilageToStyled = styled.input`
+  width: 160px;
+  height: 48px;
+  border-radius: 0 14px 14px 0;
+  border: 0;
+  background-color: #f7f7fb;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.28;
+
+  &::placeholder {
+    color: #121417;
+  }
+`;

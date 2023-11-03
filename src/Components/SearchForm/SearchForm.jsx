@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Select from "react-select";
 import {
+  CarMilageWrapper,
+  InputMilageFromStyled,
+  InputMilageToStyled,
   InputWrapper,
   StyledForm,
   StyledLabel,
+  StyledSearchBtn,
   selectCarStyles,
   selectMonthlyPriceStyles,
 } from "./SearchForm.styled";
@@ -80,24 +84,24 @@ const SearchForm = () => {
       </InputWrapper>
       <InputWrapper>
         <StyledLabel htmlFor="min-price">Car Mileage / km:</StyledLabel>
-        <div>
-          <input
+        <CarMilageWrapper>
+          <InputMilageFromStyled
             type="text"
             id="min-price"
             placeholder="From"
             value={minPrice}
             onChange={handleMinPriceChange}
           />
-          <input
+          <InputMilageToStyled
             type="text"
             id="max-price"
             placeholder="To"
             value={maxPrice}
             onChange={handleMaxPriceChange}
           />
-        </div>
+        </CarMilageWrapper>
       </InputWrapper>
-      <button>Search</button>
+      <StyledSearchBtn>Search</StyledSearchBtn>
     </StyledForm>
   );
 };
