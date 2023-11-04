@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import getFetchCollection from "../../services/getApi";
 import CarItem from "../CarItem/CarItem";
+import { CarCollectionWrapper } from "./CarCollection.styled";
 
 const CarCollection = () => {
   const [cars, setCars] = useState([]);
@@ -9,17 +10,14 @@ const CarCollection = () => {
     getFetchCollection().then((data) => setCars(data));
   }, []);
   // console.log(getFetchCollection());
-  console.log(cars);
+  // console.log(cars);
 
   return (
-    <>
-      <h2>Car Collection</h2>
-      <div>
-        {cars.map((car) => (
-          <CarItem key={car.id + car.mileage} car={car} />
-        ))}
-      </div>
-    </>
+    <CarCollectionWrapper>
+      {cars.map((car) => (
+        <CarItem key={car.id + car.mileage} car={car} />
+      ))}
+    </CarCollectionWrapper>
   );
 };
 
