@@ -17,6 +17,9 @@ const CarItem = ({ car }) => {
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
+  // const closeModal = () => {
+  //   setIsModalOpen(false);
+  // };
 
   const {
     make,
@@ -40,21 +43,33 @@ const CarItem = ({ car }) => {
         </h2>
         <p>{rentalPrice}</p>
       </CarHead>
-      <div>
+      <>
         <CarHeadAdditional>
-          <p>{addressParts[1]}</p>
-          <p>{addressParts[2]}</p>
-          <p>{rentalCompany}</p>
+          <li>
+            <p>{addressParts[1]}</p>
+          </li>
+          <li>
+            <p>{addressParts[2]}</p>
+          </li>
+          <li>
+            <p>{rentalCompany}</p>
+          </li>
         </CarHeadAdditional>
         <CarHeadAdditional>
-          <p>{type}</p>
-          <p>{model}</p>
-          <p>{mileage}</p>
-          {/* <p>{accessories[0]}</p> */}
+          <li>
+            <p>{type}</p>
+          </li>
+          <li>
+            <p>{model}</p>
+          </li>
+          <li>
+            <p>{mileage}</p>
+          </li>
+          {/* <li><p>{accessories[0]}</p> </li>*/}
         </CarHeadAdditional>
-      </div>
+      </>
       <LearnMoreBtn onClick={toggleModal}>Learn more</LearnMoreBtn>
-      {isModalOpen && <CarModal car={car} />}
+      {isModalOpen && <CarModal toggleModal={toggleModal} car={car} />}
     </CarItemWrapper>
   );
 };

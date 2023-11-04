@@ -9,8 +9,6 @@ const CarCollection = () => {
   useEffect(() => {
     getFetchCollection().then((data) => setCars(data));
   }, []);
-  // console.log(getFetchCollection());
-  // console.log(cars);
 
   return (
     <CarCollectionWrapper>

@@ -8,5 +8,5 @@ export const CarCollectionWrapper = styled.ul`
   grid-column-gap: 29px;
   grid-row-gap: 50px;
 
-  padding-top: 50px;
+  padding: 50px 0;
 `;

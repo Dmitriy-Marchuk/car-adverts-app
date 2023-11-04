@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   AccessoriesTitle,
   AdditionalModal,
@@ -13,7 +14,7 @@ import {
   RentalButton,
 } from "./CarModal.styled";
 
-const CarModal = ({ car }) => {
+const CarModal = ({ car, toggleModal }) => {
   const {
     make,
     model,
@@ -39,9 +40,28 @@ const CarModal = ({ car }) => {
     return { key, value };
   });
 
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      toggleModal();
+    }
+  };
+  const handleEscapeKey = (e) => {
+    if (e.key === "Escape") {
+      toggleModal(); // Закрыть модальное окно при нажатии на Escape
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+  }, []);
+
   return (
-    <Backdrop>
+    <Backdrop onClick={handleBackdropClick}>
       <Modal>
+        <button onClick={toggleModal}></button>
         {/* <ModalImage src={car.img || "/no-image.jpeg"} /> */}
         <ModalImage src={"/no-image.jpeg"} />
         <ModalHead>
@@ -58,7 +78,10 @@ const CarModal = ({ car }) => {
             <p>id:{id}</p>
           </li>
           <li>
-            <p>{type}</p>
+            <p>Year: {year}</p>
+          </li>
+          <li>
+            <p>Type: {type}</p>
           </li>
         </AdditionalModal>
         <AdditionalModal>

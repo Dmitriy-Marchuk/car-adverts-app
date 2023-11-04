@@ -1,26 +1,28 @@
 import { styled } from "styled-components";
 
 export const Backdrop = styled.div`
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 2000%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.5);
   padding-top: 50px;
   z-index: 1000;
-  overflow: hidden;
+  overflow: auto;
 `;
 
 export const Modal = styled.div`
-  position: relative;
+  /* position: relative; */
+  margin-top: 100px;
   background-color: #fff;
   max-width: 541px;
   z-index: 1001;
   padding: 40px;
   border-radius: 24px;
-  margin-left: auto;
-  margin-right: auto;
 `;
 
 export const ModalImage = styled.img`

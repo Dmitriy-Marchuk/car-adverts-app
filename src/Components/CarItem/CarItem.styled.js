@@ -32,7 +32,7 @@ export const CarHead = styled.div`
   }
 `;
 
-export const CarHeadAdditional = styled.div`
+export const CarHeadAdditional = styled.ul`
   display: flex;
   margin-top: 8px;
   color: rgba(18, 20, 23, 0.5);
