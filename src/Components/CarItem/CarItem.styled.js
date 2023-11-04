@@ -21,34 +21,20 @@ export const CarHead = styled.div`
   margin-top: 14px;
   padding-right: 9px;
 
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-
+  h2,
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
   span {
     color: #3470ff;
   }
 `;
 
-export const CarLocation = styled.div`
+export const CarHeadAdditional = styled.div`
   display: flex;
   margin-top: 8px;
-  color: rgba(18, 20, 23, 0.5);
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.5;
-
-  :not(:last-child) {
-    border-right: 1px solid rgba(18, 20, 23, 0.1);
-    padding-right: 6px;
-  }
-  :not(:first-child) {
-    padding-left: 6px;
-  }
-`;
-
-export const CarAdditional = styled.div`
-  display: flex;
   color: rgba(18, 20, 23, 0.5);
   font-size: 12px;
   font-weight: 400;
