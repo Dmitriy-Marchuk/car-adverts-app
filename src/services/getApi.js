@@ -1,9 +1,9 @@
 const API_KEY = "6543df3801b5e279de211518";
 
-const getFetchCollection = async () => {
+const getFetchCollection = async (page, perPage) => {
   const url = new URL(`https://${API_KEY}.mockapi.io/api/adverts`);
-  url.searchParams.append("page", 1);
-  url.searchParams.append("limit", 12);
+  url.searchParams.append("page", page);
+  url.searchParams.append("limit", perPage);
 
   return await fetch(url, {
     method: "GET",
