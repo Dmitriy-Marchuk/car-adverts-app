@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
 export const HeroWrapper = styled.div`
-  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 30px;
 
   h1 {
     margin-bottom: 30px;

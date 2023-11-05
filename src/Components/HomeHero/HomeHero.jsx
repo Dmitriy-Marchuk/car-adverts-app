@@ -1,5 +1,5 @@
-import { Section } from "../../styles/common/general.styled";
-import { HeroWrapper } from "./HomeHero.styled";
+import { Section } from "styles/common/general.styled";
+import { HeroWrapper } from "Components/HomeHero/HomeHero.styled";
 
 const HomeHero = () => {
   return (

@@ -1,5 +1,5 @@
-import Navigation from "../Navigation/Navigation";
-import { AppBarWrapper } from "./AppBar.styled";
+import Navigation from "Components/Navigation/Navigation";
+import { AppBarWrapper } from "Components/AppBar/AppBar.styled";
 
 const AppBar = () => {
   return (

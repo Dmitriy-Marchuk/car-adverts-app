@@ -1,7 +1,9 @@
 import { Helmet } from "react-helmet";
-import { Section } from "../../src/styles/common/general.styled";
-import SearchForm from "../Components/SearchForm/SearchForm";
-import CarCollection from "../Components/CarCollection/CarCollection";
+
+import SearchForm from "Components/SearchForm/SearchForm";
+import CarCollection from "Components/CarCollection/CarCollection";
+
+import { Section } from "styles/common/general.styled";
 
 const FindCar = () => {
   return (

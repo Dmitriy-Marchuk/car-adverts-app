@@ -1,5 +1,13 @@
 import { useState } from "react";
 import Select from "react-select";
+
+import carNames from "services/makes.json";
+import monthlyOptions from "services/monthlyOptions";
+import {
+  handleMaxMileageChange,
+  handleMinMileageChange,
+} from "Utils/minMaxMileage";
+
 import {
   CarMilageWrapper,
   InputMilageFromStyled,
@@ -10,30 +18,18 @@ import {
   StyledSearchBtn,
   selectCarStyles,
   selectMonthlyPriceStyles,
-} from "./SearchForm.styled";
+} from "Components/SearchForm/SearchForm.styled";
 
 const SearchForm = () => {
-  const options = [
-    { value: "car1", label: "Автомобиль 1" },
-    { value: "car2", label: "Автомобиль 2" },
-    { value: "car3", label: "Автомобиль 3" },
-  ];
-  const priceMonthlyOptions = [
-    { value: 10, label: "10" },
-    { value: 20, label: "20" },
-    { value: 30, label: "30" },
-    { value: 40, label: "40" },
-    { value: 50, label: "50" },
-    { value: 60, label: "60" },
-    { value: 70, label: "70" },
-    { value: 80, label: "80" },
-    { value: 90, label: "90" },
-    { value: 100, label: "100 +" },
-  ];
   const [selectedCar, setSelectedCar] = useState(null);
   const [selectedMonthlyPrice, setselectedMonthlyPrice] = useState(null);
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+
+  const carOptions = carNames.map((make) => ({
+    value: make,
+    label: make,
+  }));
 
   const handleCarChange = (selectedOption) => {
     setSelectedCar(selectedOption);
@@ -42,18 +38,18 @@ const SearchForm = () => {
     setselectedMonthlyPrice(selectedOption);
   };
 
-  const handleMinPriceChange = (e) => {
-    const input = e.target.value;
-    if (/^\d*$/.test(input)) {
-      setMinPrice(input);
-    }
-  };
-  const handleMaxPriceChange = (e) => {
-    const input = e.target.value;
-    if (/^\d*$/.test(input)) {
-      setMaxPrice(input);
-    }
-  };
+  // const handleMinPriceChange = (e) => {
+  //   const input = e.target.value;
+  //   if (/^\d*$/.test(input)) {
+  //     setMinPrice(input);
+  //   }
+  // };
+  // const handleMaxPriceChange = (e) => {
+  //   const input = e.target.value;
+  //   if (/^\d*$/.test(input)) {
+  //     setMaxPrice(input);
+  //   }
+  // };
 
   return (
     <StyledForm>
@@ -62,7 +58,7 @@ const SearchForm = () => {
         <Select
           styles={selectCarStyles}
           id="car-select"
-          options={options}
+          options={carOptions}
           value={selectedCar}
           onChange={handleCarChange}
           isSearchable={true}
@@ -75,7 +71,7 @@ const SearchForm = () => {
         <Select
           styles={selectMonthlyPriceStyles}
           id="price-monthly"
-          options={priceMonthlyOptions}
+          options={monthlyOptions}
           value={selectedMonthlyPrice}
           onChange={handleMonthlyPriceChange}
           isSearchable={false}
@@ -90,14 +86,14 @@ const SearchForm = () => {
             id="min-price"
             placeholder="From"
             value={minPrice}
-            onChange={handleMinPriceChange}
+            onChange={(e) => handleMinMileageChange(e, setMinPrice)}
           />
           <InputMilageToStyled
             type="text"
             id="max-price"
             placeholder="To"
             value={maxPrice}
-            onChange={handleMaxPriceChange}
+            onChange={(e) => handleMaxMileageChange(e, setMaxPrice)}
           />
         </CarMilageWrapper>
       </InputWrapper>

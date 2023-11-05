@@ -6,6 +6,7 @@ export const NavItem = styled(NavLink)`
   color: rgba(0, 113, 227, 1);
   text-decoration: none;
   font-size: 30px;
+
   :first-child {
     margin-right: 10px;
   }

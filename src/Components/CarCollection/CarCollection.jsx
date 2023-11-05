@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import getFetchCollection from "../../services/getApi";
-import CarItem from "../CarItem/CarItem";
-import { CarCollectionWrapper } from "./CarCollection.styled";
+
+import getFetchCollection from "services/getApi";
+
+import CarItem from "Components/CarItem/CarItem";
+import { CarCollectionWrapper } from "Components/CarCollection/CarCollection.styled";
 
 const CarCollection = () => {
   const [cars, setCars] = useState([]);

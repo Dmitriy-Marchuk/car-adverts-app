@@ -1,44 +1,32 @@
+import ReactModal from "react-modal";
 import { styled } from "styled-components";
 
-export const Backdrop = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  padding-top: 50px;
-  z-index: 1000;
-  overflow: auto;
-`;
-
-export const Modal = styled.div`
-  /* position: relative; */
-  margin-top: 100px;
-  background-color: #fff;
+export const ModalWrapped = styled(ReactModal)`
+  position: relative;
   max-width: 541px;
-  z-index: 1001;
   padding: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: auto;
+  outline: none;
   border-radius: 24px;
+  background-color: #fff;
 `;
 
 export const ModalImage = styled.img`
+  display: block;
   width: 461px;
   height: 100%;
-  display: block;
-  object-fit: cover;
   border-radius: 14px;
+  object-fit: cover;
 `;
 
 export const ModalHead = styled.h2`
+  margin-top: 14px;
+  margin-bottom: 8px;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.33;
-  margin-top: 14px;
-  margin-bottom: 8px;
   span {
     color: #3470ff;
   }
@@ -47,32 +35,24 @@ export const ModalHead = styled.h2`
 export const AdditionalModal = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin-left: -6px;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
-  margin-left: -6px;
 
   p {
-    border-right: 1px solid rgba(18, 20, 23, 0.1);
     padding-right: 6px;
     padding-left: 6px;
-  }
-
-  /* :not(:last-child) {
     border-right: 1px solid rgba(18, 20, 23, 0.1);
-    padding-right: 6px;
   }
-  :not(:first-child) {
-    padding-left: 6px;
-  } */
 `;
 
 export const DescriptionParagraph = styled.p`
+  margin-top: 14px;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.42;
-  margin-top: 14px;
 `;
 
 export const AdditionalTitle = styled.h3`
@@ -86,18 +66,17 @@ export const AdditionalTitle = styled.h3`
 export const ConditionsRental = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 24px;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.5;
-  margin-bottom: 24px;
 
   p {
     padding: 7px 14px;
     margin-right: 7px;
     margin-bottom: 8px;
-
-    background-color: #f9f9f9;
     border-radius: 35px;
+    background-color: #f9f9f9;
   }
   span {
     color: #3470ff;
@@ -106,11 +85,11 @@ export const ConditionsRental = styled.div`
 `;
 
 export const RentalButton = styled.button`
-  background-color: #3470ff;
   padding: 12px 50px;
-  color: #fff;
   border: none;
   border-radius: 12px;
+  background-color: #3470ff;
+  color: #fff;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.42;
@@ -118,4 +97,12 @@ export const RentalButton = styled.button`
   &:hover {
     background-color: #0b44cd;
   }
+`;
+
+export const CloseModalButton = styled.button`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: none;
 `;

@@ -1,4 +1,4 @@
-import { NavItem, NavWrapper } from "./Navigation.styled";
+import { NavItem, NavWrapper } from "Components/Navigation/Navigation.styled";
 
 const Navigation = () => {
   return (

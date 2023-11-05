@@ -8,9 +8,9 @@ export const CarItemWrapper = styled.div`
 `;
 
 export const CarImage = styled.img`
+  display: block;
   height: 268px;
   width: 100%;
-  display: block;
   object-fit: cover;
   border-radius: 14px;
 `;
@@ -53,10 +53,10 @@ export const LearnMoreBtn = styled.button`
   height: 44px;
   margin-top: 28px;
 
-  background-color: #3470ff;
-  color: #fff;
   border: none;
   border-radius: 12px;
+  background-color: #3470ff;
+  color: #fff;
   cursor: pointer;
   line-height: 1.28;
 
