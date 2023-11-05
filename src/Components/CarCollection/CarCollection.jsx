@@ -6,17 +6,33 @@ import { CarCollectionWrapper } from "Components/CarCollection/CarCollection.sty
 const CarCollection = () => {
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalHits, setTotalHits] = useState(null);
+
   const perPage = 12;
 
   useEffect(() => {
-    getFetchCollection(page, perPage).then((data) => setCars(data));
+    getFetchCollection(page, perPage).then((data) => {
+      setCars(data);
+      setTotalHits(data.length);
+    });
   }, []);
 
+  // const loadMoreCars = () => {
+  //   const nextPage = page + 1;
+  //   getFetchCollection(nextPage, perPage).then((data) => {
+  //     setCars((prevCars) => [...prevCars, ...data]);
+  //     setPage(nextPage);
+  //   });
+  // };
   const loadMoreCars = () => {
     const nextPage = page + 1;
     getFetchCollection(nextPage, perPage).then((data) => {
-      setCars((prevCars) => [...prevCars, ...data]);
-      setPage(nextPage);
+      if (data.length === 0) {
+        setTotalHits(0);
+      } else {
+        setCars((prevCars) => [...prevCars, ...data]);
+        setPage(nextPage);
+      }
     });
   };
 
@@ -27,7 +43,9 @@ const CarCollection = () => {
           <CarItem key={car.id + car.mileage} car={car} />
         ))}
       </CarCollectionWrapper>
-      <button onClick={() => loadMoreCars(page, perPage)}>Load More</button>
+      {totalHits > 0 && (
+        <button onClick={() => loadMoreCars(page, perPage)}>Load More</button>
+      )}
     </>
   );
 };
