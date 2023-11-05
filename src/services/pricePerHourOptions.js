@@ -1,4 +1,4 @@
-const monthlyOptions = [
+const pricePerHourOptions = [
   { value: 10, label: "10" },
   { value: 20, label: "20" },
   { value: 30, label: "30" },
@@ -14,4 +14,4 @@ const monthlyOptions = [
   { value: 201, label: "201 +" },
 ];
 
-export default monthlyOptions;
+export default pricePerHourOptions;

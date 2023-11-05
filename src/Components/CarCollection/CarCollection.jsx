@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-
 import getFetchCollection from "services/getApi";
-
 import CarItem from "Components/CarItem/CarItem";
 import { CarCollectionWrapper } from "Components/CarCollection/CarCollection.styled";
 

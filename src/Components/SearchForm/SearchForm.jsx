@@ -2,7 +2,7 @@ import { useState } from "react";
 import Select from "react-select";
 
 import carNames from "services/makes.json";
-import monthlyOptions from "services/monthlyOptions";
+import pricePerHourOptions from "services/pricePerHourOptions";
 import {
   handleMaxMileageChange,
   handleMinMileageChange,
@@ -22,7 +22,7 @@ import {
 
 const SearchForm = () => {
   const [selectedCar, setSelectedCar] = useState(null);
-  const [selectedMonthlyPrice, setselectedMonthlyPrice] = useState(null);
+  const [selectedPricePerHour, setselectedPricePerHour] = useState(null);
   const [minMileage, setMinMileage] = useState("");
   const [maxMileage, setMaxMileage] = useState("");
 
@@ -35,14 +35,14 @@ const SearchForm = () => {
     setSelectedCar(selectedOption);
   };
   const handleMonthlyPriceChange = (selectedOption) => {
-    setselectedMonthlyPrice(selectedOption);
+    setselectedPricePerHour(selectedOption);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
     const formData = {
       selectedCar,
-      selectedMonthlyPrice,
+      selectedPricePerHour,
       minMileage,
       maxMileage,
     };
@@ -70,8 +70,8 @@ const SearchForm = () => {
         <Select
           styles={selectMonthlyPriceStyles}
           id="price-monthly"
-          options={monthlyOptions}
-          value={selectedMonthlyPrice}
+          options={pricePerHourOptions}
+          value={selectedPricePerHour}
           onChange={handleMonthlyPriceChange}
           isSearchable={false}
           placeholder="To $"
