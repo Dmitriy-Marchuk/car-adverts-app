@@ -23,8 +23,8 @@ import {
 const SearchForm = () => {
   const [selectedCar, setSelectedCar] = useState(null);
   const [selectedMonthlyPrice, setselectedMonthlyPrice] = useState(null);
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minMileage, setMinMileage] = useState("");
+  const [maxMileage, setMaxMileage] = useState("");
 
   const carOptions = carNames.map((make) => ({
     value: make,
@@ -38,21 +38,20 @@ const SearchForm = () => {
     setselectedMonthlyPrice(selectedOption);
   };
 
-  // const handleMinPriceChange = (e) => {
-  //   const input = e.target.value;
-  //   if (/^\d*$/.test(input)) {
-  //     setMinPrice(input);
-  //   }
-  // };
-  // const handleMaxPriceChange = (e) => {
-  //   const input = e.target.value;
-  //   if (/^\d*$/.test(input)) {
-  //     setMaxPrice(input);
-  //   }
-  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const formData = {
+      selectedCar,
+      selectedMonthlyPrice,
+      minMileage,
+      maxMileage,
+    };
+
+    console.log(formData);
+  };
 
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSearch}>
       <InputWrapper>
         <StyledLabel htmlFor="car-select">Car brand</StyledLabel>
         <Select
@@ -85,15 +84,15 @@ const SearchForm = () => {
             type="text"
             id="min-price"
             placeholder="From"
-            value={minPrice}
-            onChange={(e) => handleMinMileageChange(e, setMinPrice)}
+            value={minMileage}
+            onChange={(e) => handleMinMileageChange(e, setMinMileage)}
           />
           <InputMilageToStyled
             type="text"
             id="max-price"
             placeholder="To"
-            value={maxPrice}
-            onChange={(e) => handleMaxMileageChange(e, setMaxPrice)}
+            value={maxMileage}
+            onChange={(e) => handleMaxMileageChange(e, setMaxMileage)}
           />
         </CarMilageWrapper>
       </InputWrapper>
