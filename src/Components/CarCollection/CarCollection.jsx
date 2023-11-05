@@ -17,13 +17,6 @@ const CarCollection = () => {
     });
   }, []);
 
-  // const loadMoreCars = () => {
-  //   const nextPage = page + 1;
-  //   getFetchCollection(nextPage, perPage).then((data) => {
-  //     setCars((prevCars) => [...prevCars, ...data]);
-  //     setPage(nextPage);
-  //   });
-  // };
   const loadMoreCars = () => {
     const nextPage = page + 1;
     getFetchCollection(nextPage, perPage).then((data) => {
