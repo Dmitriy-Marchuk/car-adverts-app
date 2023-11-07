@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 export const StyledForm = styled.form`
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -16,9 +20,15 @@ export const StyledLabel = styled.label`
 
 export const InputWrapper = styled.div`
   flex-direction: row;
+  @media (max-width: 1024px) {
+    margin: 10px 0 0 0;
+  }
 `;
 
 export const StyledSearchBtn = styled.button`
+  @media (max-width: 1024px) {
+    margin: 20px 0 0 0;
+  }
   background-color: #3470ff;
   color: #fff;
   border: none;

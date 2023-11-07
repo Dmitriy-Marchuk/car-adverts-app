@@ -105,4 +105,10 @@ export const CloseModalButton = styled.button`
   right: 16px;
   border: none;
   background: none;
+  padding: 10px;
+
+  &:hover {
+    background-color: rgba(247, 247, 251, 1);
+    border-radius: 30%;
+  }
 `;

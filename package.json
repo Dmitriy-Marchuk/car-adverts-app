@@ -1,8 +1,8 @@
 {
-  "name": "car-buying-app",
+  "name": "car-adverts-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmitriy-marchuk.github.io/car-buying-app/",
+  "homepage": "https://dmitriy-marchuk.github.io/car-adverts-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
