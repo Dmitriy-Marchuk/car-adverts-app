@@ -84,7 +84,7 @@ export const ConditionsRental = styled.div`
   }
 `;
 
-export const RentalButton = styled.button`
+export const RentalButton = styled.a`
   padding: 12px 50px;
   border: none;
   border-radius: 12px;

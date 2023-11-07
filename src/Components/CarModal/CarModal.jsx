@@ -126,7 +126,7 @@ const CarModal = ({ car, toggleModal }) => {
           </p>
         </li>
       </ConditionsRental>
-      <RentalButton>Rental car</RentalButton>
+      <RentalButton href="tel:+380730000000">Rental car</RentalButton>
     </ModalWrapped>
   );
 };
