@@ -8,7 +8,7 @@ import Layout from "Components/Layout/Layout.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/car-buying-app">
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
