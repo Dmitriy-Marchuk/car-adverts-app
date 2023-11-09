@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Adverts Cars</title>
       </Helmet>
       <HomeHero />
     </>
