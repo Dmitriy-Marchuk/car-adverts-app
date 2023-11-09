@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  model: "",
-  mileage: "",
-  minPrice: "",
-  maxPrice: "",
+  filters: {
+    model: "",
+    mileage: "",
+    minPrice: "",
+    maxPrice: "",
+  },
 };
 
 const carFiltersSlice = createSlice({
@@ -12,22 +14,22 @@ const carFiltersSlice = createSlice({
   initialState,
   reducers: {
     setModel: (state, action) => {
-      state.model = action.payload;
+      state.filters.model = action.payload;
     },
     setMileage: (state, action) => {
-      state.mileage = action.payload;
+      state.filters.mileage = action.payload;
     },
     setMinPrice: (state, action) => {
-      state.minPrice = action.payload;
+      state.filters.minPrice = action.payload;
     },
     setMaxPrice: (state, action) => {
-      state.maxPrice = action.payload;
+      state.filters.maxPrice = action.payload;
     },
     resetFilters: (state) => {
-      state.model = "";
-      state.mileage = "";
-      state.minPrice = "";
-      state.maxPrice = "";
+      state.filters.model = "";
+      state.filters.mileage = "";
+      state.filters.minPrice = "";
+      state.filters.maxPrice = "";
     },
   },
 });
