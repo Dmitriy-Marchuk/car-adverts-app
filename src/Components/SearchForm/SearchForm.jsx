@@ -47,7 +47,7 @@ const SearchForm = () => {
       maxMileage,
     };
 
-    console.log(formData);
+    console.log("formData:", formData);
   };
 
   return (
