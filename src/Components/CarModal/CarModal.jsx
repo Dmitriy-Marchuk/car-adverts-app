@@ -48,7 +48,7 @@ const CarModal = ({ car, toggleModal }) => {
           padding: "20px 0",
         },
       }}
-      isOpen={toggleModal}
+      isOpen={true}
       onRequestClose={toggleModal}
     >
       <CloseModalButton onClick={toggleModal}>
