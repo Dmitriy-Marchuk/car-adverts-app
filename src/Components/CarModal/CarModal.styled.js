@@ -41,10 +41,12 @@ export const AdditionalModal = styled.ul`
   line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
 
-  p {
+  li {
     padding-right: 6px;
     padding-left: 6px;
-    border-right: 1px solid rgba(18, 20, 23, 0.1);
+    &:not(:last-child) {
+      border-right: 1px solid rgba(18, 20, 23, 0.1);
+    }
   }
 `;
 
