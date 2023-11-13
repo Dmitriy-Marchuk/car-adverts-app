@@ -1,7 +1,5 @@
-export const selectCarFilters = (state) => state.carFilters.filters;
-export const selectSelectedCar = (state) =>
-  state.carFilters.filters.selectedCar;
-export const selectSelectedPricePerHour = (state) =>
-  state.carFilters.filters.selectedPricePerHour;
-export const selectMinMileage = (state) => state.carFilters.filters.minMileage;
-export const selectMaxMileage = (state) => state.carFilters.filters.maxMileage;
+export const selectPricePerHour = (state) => state.carFilters.pricePerHour;
+export const selectModel = (state) => state.carFilters.model;
+export const setMinMileage = (state) => state.carFilters.minMileage;
+export const setMaxMileage = (state) => state.carFilters.maxMileage;
+export const resetFilters = (state) => state.carFilters.filters;
