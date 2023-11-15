@@ -7,6 +7,14 @@ export const CarItemWrapper = styled.div`
   max-width: 274px;
 `;
 
+export const CarImage = styled.img`
+  display: block;
+  height: 268px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+`;
+
 export const CarHead = styled.div`
   display: flex;
   justify-content: space-between;
@@ -22,14 +30,6 @@ export const CarHead = styled.div`
   span {
     color: #3470ff;
   }
-`;
-
-export const CarImage = styled.img`
-  display: block;
-  height: 268px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 14px;
 `;
 
 export const CarHeadAdditional = styled.ul`
