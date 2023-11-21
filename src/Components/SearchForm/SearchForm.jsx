@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Select from "react-select";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   setModel as setCarModel,
