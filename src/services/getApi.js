@@ -11,6 +11,7 @@ const getFetchCollection = async (page, perPage) => {
         limit: perPage,
       },
     });
+    console.log(response.data);
 
     return response.data;
   } catch (error) {

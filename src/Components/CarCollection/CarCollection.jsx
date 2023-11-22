@@ -16,23 +16,14 @@ import {
 const CarCollection = () => {
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
+  const [filteredCars, setFilteredCars] = useState([]);
+
   const perPage = 12;
 
-  // const selectedModel = useSelector(selectModel);
-  // const selectedPricePerHour = useSelector(selectPricePerHour);
-  // const settedMinMileage = useSelector(setMinMileage);
-  // const settedMaxMileage = useSelector(setMaxMileage);
-
-  useEffect(() => {
-    getFetchCollection(page, perPage).then((data) => {
-      setCars(data);
-    });
-  }, []);
-
-  // useEffect(() => {
-  //   console.log("Effect in CarCollection triggered");
-  //   console.log("Selected Model in CarCollection:", selectedModel);
-  // }, [selectedModel]);
+  const pricePerHour = useSelector(selectPricePerHour);
+  const model = useSelector(selectModel);
+  const minMileage = useSelector(setMinMileage);
+  const maxMileage = useSelector(setMaxMileage);
 
   const loadMoreCars = () => {
     const nextPage = page + 1;
@@ -42,29 +33,29 @@ const CarCollection = () => {
     });
   };
 
-  const pricePerHour = useSelector(selectPricePerHour);
-  const model = useSelector(selectModel);
-  const minMileage = useSelector(setMinMileage);
-  const maxMileage = useSelector(setMaxMileage);
+  useEffect(() => {
+    getFetchCollection(page, perPage).then((data) => {
+      setCars(data);
+    });
+  }, []);
 
   useEffect(() => {
     console.log("Price Per Hour:", pricePerHour);
     console.log("Model:", model);
     console.log("Min Mileage:", minMileage);
     console.log("Max Mileage:", maxMileage);
+    updateFilteredCars();
   }, [pricePerHour, model, minMileage, maxMileage]);
 
-  // getFiltredCars = () => {
-  //   const filtredCars = cars.filter();
-
-  //   // return filtredCars;
-  //   return cars;
-  // };
+  const updateFilteredCars = async () => {
+    const filtredCars = cars.filter((car) => car.make === model.value);
+    setFilteredCars(filtredCars);
+  };
 
   return (
     <>
       <CarCollectionWrapper>
-        {cars.map((car) => (
+        {filteredCars.map((car) => (
           <CarItem key={car.id + car.mileage} car={car} />
         ))}
       </CarCollectionWrapper>
