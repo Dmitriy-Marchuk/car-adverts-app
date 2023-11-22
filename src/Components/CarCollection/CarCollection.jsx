@@ -47,7 +47,7 @@ const CarCollection = () => {
     updateFilteredCars();
   }, [pricePerHour, model, minMileage, maxMileage]);
 
-  const updateFilteredCars = async () => {
+  const updateFilteredCars = () => {
     const filtredCars = cars.filter((car) => car.make === model.value);
     setFilteredCars(filtredCars);
   };
@@ -59,11 +59,13 @@ const CarCollection = () => {
           <CarItem key={car.id + car.mileage} car={car} />
         ))}
       </CarCollectionWrapper>
-      {cars.length !== null && cars.length > 0 && cars.length % 12 === 0 && (
-        <LoadMoreBtn onClick={() => loadMoreCars(page, perPage)}>
-          Load More
-        </LoadMoreBtn>
-      )}
+      {filteredCars.length !== null &&
+        filteredCars.length > 0 &&
+        filteredCars.length % 12 === 0 && (
+          <LoadMoreBtn onClick={() => loadMoreCars(page, perPage)}>
+            Load More
+          </LoadMoreBtn>
+        )}
     </>
   );
 };
