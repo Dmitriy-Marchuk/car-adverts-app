@@ -1,22 +1,16 @@
-import axios from "axios";
+import { axios } from "services/axiosClient";
 
-const API_KEY = "6543df3801b5e279de211518";
-const url = `https://${API_KEY}.mockapi.io/api/adverts`;
-
-const getFetchCollection = async (page, perPage) => {
-  try {
-    const response = await axios.get(url, {
-      params: {
-        page: page,
-        limit: perPage,
-      },
-    });
-    console.log(response.data);
-
-    return response.data;
-  } catch (error) {
-    throw new Error(error);
-  }
+// export const getFetchCollection =
+//   ({ page, perPage }) =>
+//   () => {
+//     axios.get("/", {
+//       params: { page, perPage },
+//     });
+//   };
+export const getFetchCollection = ({ page, perPage }) => {
+  return axios.get("/", {
+    params: { page, limit: perPage },
+  });
 };
 
 export default getFetchCollection;
