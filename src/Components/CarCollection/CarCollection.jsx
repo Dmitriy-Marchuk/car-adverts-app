@@ -18,13 +18,12 @@ import { useQuery } from "@tanstack/react-query";
 const CarCollection = () => {
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
+  const [filteredCars, setFilteredCars] = useState([]);
 
   const pricePerHour = useSelector(selectPricePerHour);
   const model = useSelector(selectModel);
   const minMileage = useSelector(setMinMileage);
   const maxMileage = useSelector(setMaxMileage);
-
-  const [filteredCars, setFilteredCars] = useState([]);
 
   const perPage = 12;
 
@@ -42,7 +41,7 @@ const CarCollection = () => {
   useEffect(() => {
     if (isLoadingCars || isErrorCars || !carsResponse?.length) return;
 
-    setCars([...cars, ...carsResponse]);
+    setCars((prevCars) => [...prevCars, ...carsResponse]);
   }, [carsResponse, isErrorCars, isLoadingCars]);
 
   const loadMoreCars = () => {
@@ -57,7 +56,7 @@ const CarCollection = () => {
     console.log("Min Mileage:", minMileage);
     console.log("Max Mileage:", maxMileage);
     updateFilteredCars();
-  }, [pricePerHour, model, minMileage, maxMileage]);
+  }, [cars, pricePerHour, model, minMileage, maxMileage]);
 
   const updateFilteredCars = () => {
     const filtered = cars.filter((car) => {

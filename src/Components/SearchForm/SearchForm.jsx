@@ -28,8 +28,8 @@ import {
 const SearchForm = () => {
   const [selectedModel, setSelectedModel] = useState(null);
   const [selectedPricePerHour, setSelectedPricePerHour] = useState(null);
-  const [minMileage, setMinMileage] = useState("");
-  const [maxMileage, setMaxMileage] = useState("");
+  const [selectedMinMileage, setSelectedMinMileage] = useState("");
+  const [selectedMaxMileage, setSelectedMaxMileage] = useState("");
 
   const dispatch = useDispatch();
 
@@ -47,10 +47,17 @@ const SearchForm = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(setCarModel(selectedModel));
-    dispatch(setCarPricePerHour(selectedPricePerHour));
-    dispatch(setCarMinMileage(minMileage));
-    dispatch(setCarMaxMileage(maxMileage));
+    if (
+      selectedModel !== null ||
+      selectedPricePerHour !== null ||
+      selectedMinMileage !== "" ||
+      selectedMaxMileage !== ""
+    ) {
+      dispatch(setCarModel(selectedModel));
+      dispatch(setCarPricePerHour(selectedPricePerHour));
+      dispatch(setCarMinMileage(selectedMinMileage));
+      dispatch(setCarMaxMileage(selectedMaxMileage));
+    } else return console.log("Please select at least one parameter");
   };
 
   return (
@@ -87,15 +94,15 @@ const SearchForm = () => {
             type="text"
             id="min-price"
             placeholder="From"
-            value={minMileage}
-            onChange={(e) => handleMileageChange(e, setMinMileage)}
+            value={selectedMinMileage}
+            onChange={(e) => handleMileageChange(e, setSelectedMinMileage)}
           />
           <InputMilageToStyled
             type="text"
             id="max-price"
             placeholder="To"
-            value={maxMileage}
-            onChange={(e) => handleMileageChange(e, setMaxMileage)}
+            value={selectedMaxMileage}
+            onChange={(e) => handleMileageChange(e, setSelectedMaxMileage)}
           />
         </CarMilageWrapper>
       </InputWrapper>
