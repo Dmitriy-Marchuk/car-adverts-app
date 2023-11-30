@@ -51,21 +51,19 @@ const CarCollection = () => {
   };
 
   useEffect(() => {
-    console.log("Price Per Hour:", pricePerHour);
-    console.log("Model:", model);
-    console.log("Min Mileage:", minMileage);
-    console.log("Max Mileage:", maxMileage);
     updateFilteredCars();
   }, [cars, pricePerHour, model, minMileage, maxMileage]);
 
   const updateFilteredCars = () => {
     const filtered = cars.filter((car) => {
-      const isModelMatch = !model.value || car.make === model.value;
-      const isPricePerHourMatch =
-        !pricePerHour ||
-        parseInt(car.rentalPrice, 10) === parseInt(pricePerHour.value, 10);
-
-      return isModelMatch && isPricePerHourMatch;
+      const isModelMatch = !model || (model.value && car.make === model.value);
+      const isPricePerHourMatch = !pricePerHour
+        ? car.rentalPrice
+        : Number(car.rentalPrice.substring(1)) <= Number(pricePerHour.value);
+      const isFilteredByPrice =
+        (!minMileage || car.mileage >= minMileage) &&
+        (!maxMileage || car.mileage <= maxMileage);
+      return isModelMatch && isPricePerHourMatch && isFilteredByPrice;
     });
     setFilteredCars(filtered);
   };
