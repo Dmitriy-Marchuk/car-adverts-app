@@ -1,7 +1,10 @@
 import { styled } from "styled-components";
 
+import { ReactComponent as FavIcon } from "images/fav-icon.svg";
+
 export const CarItemWrapper = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: space-between;
   max-width: 274px;
@@ -13,6 +16,22 @@ export const CarImage = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 14px;
+`;
+
+export const StyledHeartIcon = styled(FavIcon)`
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
+
+  fill: ${({ isFavorite }) => (isFavorite ? "#ff0000" : "#ccc")};
+  cursor: pointer;
+  transition: fill 0.3s ease;
+
+  &:hover {
+    fill: #ff0000;
+  }
 `;
 
 export const CarHead = styled.div`

@@ -7,11 +7,13 @@ import {
   CarImage,
   CarItemWrapper,
   LearnMoreBtn,
+  StyledHeartIcon,
 } from "./CarItem.styled";
 
 import NoImage from "images/no-image.jpeg";
+import FavIcon from "images/fav-icon.svg";
 
-const CarItem = ({ car }) => {
+const CarItem = ({ car, onToggleFavorite }) => {
   const {
     make,
     model,
@@ -30,8 +32,11 @@ const CarItem = ({ car }) => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const isFavorite = car.isFavorite;
+
   return (
     <CarItemWrapper>
+      <StyledHeartIcon isFavorite={isFavorite} />
       {/* <CarImage src={car.img || "/no-image.jpeg"} /> */}
       <CarImage src={NoImage} />
 
