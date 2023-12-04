@@ -35,9 +35,13 @@ const CarCollection = () => {
     queryKey: ["cars", page],
     queryFn: () => getFetchCollection({ page, perPage }),
 
-    select: (res) => res.data,
+    select: (res) => {
+      return res.data.map((car) => {
+        return { ...car, isFavorite: false };
+      });
+    },
   });
-
+  console.log(carsResponse);
   useEffect(() => {
     if (isLoadingCars || isErrorCars || !carsResponse?.length) return;
 
@@ -68,11 +72,27 @@ const CarCollection = () => {
     setFilteredCars(filtered);
   };
 
+  const toggleFavoriteCar = (id) => {
+    if (!cars.length) return;
+
+    const filteredCars = cars.map((car) => {
+      if (car.id !== id) return car;
+      return { ...car, isFavorite: !car.isFavorite };
+    });
+
+    setCars(filteredCars);
+  };
+
+  console.log("cars", cars);
   return (
     <>
       <CarCollectionWrapper>
         {filteredCars.map((car) => (
-          <CarItem key={car.id + car.mileage} car={car} />
+          <CarItem
+            key={car.id + car.mileage}
+            car={car}
+            toggleFavoriteCar={toggleFavoriteCar}
+          />
         ))}
       </CarCollectionWrapper>
       {filteredCars.length !== null &&

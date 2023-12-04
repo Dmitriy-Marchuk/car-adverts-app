@@ -13,7 +13,7 @@ import {
 import NoImage from "images/no-image.jpeg";
 import FavIcon from "images/fav-icon.svg";
 
-const CarItem = ({ car, onToggleFavorite }) => {
+const CarItem = ({ car, onToggleFavorite, toggleFavoriteCar }) => {
   const {
     make,
     model,
@@ -23,6 +23,7 @@ const CarItem = ({ car, onToggleFavorite }) => {
     rentalCompany,
     type,
     mileage,
+    id,
   } = car;
 
   const addressParts = address.split(", ");
@@ -32,11 +33,12 @@ const CarItem = ({ car, onToggleFavorite }) => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const isFavorite = car.isFavorite;
-
   return (
     <CarItemWrapper>
-      <StyledHeartIcon isFavorite={isFavorite} />
+      <StyledHeartIcon
+        isFavorite={car.isFavorite}
+        onClick={() => toggleFavoriteCar(id)}
+      />
       {/* <CarImage src={car.img || "/no-image.jpeg"} /> */}
       <CarImage src={NoImage} />
 

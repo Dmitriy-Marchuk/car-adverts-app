@@ -18,19 +18,21 @@ export const CarImage = styled.img`
   border-radius: 14px;
 `;
 
-export const StyledHeartIcon = styled(FavIcon)`
+export const StyledHeartIcon = styled(({ isFavorite, ...rest }) => (
+  <FavIcon {...rest} data-isfavorite={isFavorite ? "true" : "false"} />
+))`
   width: 18px;
   height: 18px;
   position: absolute;
   right: 14px;
   top: 14px;
+  fill: ${({ isFavorite }) => (isFavorite ? "rgba(217, 0, 27, 1)" : "#ccc")};
 
-  fill: ${({ isFavorite }) => (isFavorite ? "#ff0000" : "#ccc")};
   cursor: pointer;
   transition: fill 0.3s ease;
 
   &:hover {
-    fill: #ff0000;
+    fill: rgba(217, 0, 27, 1);
   }
 `;
 
