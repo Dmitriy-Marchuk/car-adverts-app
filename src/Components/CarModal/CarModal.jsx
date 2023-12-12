@@ -54,8 +54,8 @@ const CarModal = ({ car, toggleModal }) => {
       <CloseModalButton onClick={toggleModal}>
         <img src={closeIcon} alt="Close button" />
       </CloseModalButton>
-      {/* <ModalImage src={car.img || "NoImage"} /> */}
-      <ModalImage src={NoImage} />
+      <ModalImage src={car.img || "NoImage"} />
+      {/* <ModalImage src={NoImage} /> */}
       <ModalHead>
         {make} <span>{model}</span>, {year}
       </ModalHead>

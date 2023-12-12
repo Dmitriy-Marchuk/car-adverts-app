@@ -11,9 +11,8 @@ import {
 } from "./CarItem.styled";
 
 import NoImage from "images/no-image.jpeg";
-import FavIcon from "images/fav-icon.svg";
 
-const CarItem = ({ car, onToggleFavorite, toggleFavoriteCar }) => {
+const CarItem = ({ car, toggleFavoriteCar }) => {
   const {
     make,
     model,
@@ -39,9 +38,7 @@ const CarItem = ({ car, onToggleFavorite, toggleFavoriteCar }) => {
         isFavorite={car.isFavorite}
         onClick={() => toggleFavoriteCar(id)}
       />
-      {/* <CarImage src={car.img || "/no-image.jpeg"} /> */}
-      <CarImage src={NoImage} />
-
+      <CarImage src={car.img || "/no-image.jpeg"} />
       <CarHead>
         <h2>
           {make} <span>{model}</span>, {year}
