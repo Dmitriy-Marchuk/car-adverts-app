@@ -44,8 +44,8 @@ const CarModal = ({ car, toggleModal }) => {
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          overflowY: "auto",
           padding: "20px 0",
+          overflowY: "auto",
         },
       }}
       isOpen={true}
