@@ -1,5 +1,5 @@
 import closeIcon from "images/close-icon.svg";
-import NoImage from "images/no-image.jpeg";
+// import NoImage from "images/no-image.jpeg";
 
 import {
   AdditionalModal,
