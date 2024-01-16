@@ -56,7 +56,7 @@ const CarCollection = () => {
 
   useEffect(() => {
     updateFilteredCars();
-  }, [cars, pricePerHour, model, minMileage, maxMileage, page]);
+  }, [cars, pricePerHour, model, minMileage, maxMileage]);
 
   const updateFilteredCars = () => {
     const filtered = cars.filter((car) => {
