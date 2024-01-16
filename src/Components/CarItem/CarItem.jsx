@@ -7,11 +7,12 @@ import {
   CarImage,
   CarItemWrapper,
   LearnMoreBtn,
+  StyledHeartIcon,
 } from "./CarItem.styled";
 
-import NoImage from "images/no-image.jpeg";
+// import NoImage from "images/no-image.jpeg";
 
-const CarItem = ({ car }) => {
+const CarItem = ({ car, toggleFavoriteCar }) => {
   const {
     make,
     model,
@@ -21,6 +22,7 @@ const CarItem = ({ car }) => {
     rentalCompany,
     type,
     mileage,
+    id,
   } = car;
 
   const addressParts = address.split(", ");
@@ -32,9 +34,11 @@ const CarItem = ({ car }) => {
 
   return (
     <CarItemWrapper>
-      {/* <CarImage src={car.img || "/no-image.jpeg"} /> */}
-      <CarImage src={NoImage} />
-
+      <StyledHeartIcon
+        isFavorite={car.isFavorite}
+        onClick={() => toggleFavoriteCar(id)}
+      />
+      <CarImage src={car.img || "/no-image.jpeg"} />
       <CarHead>
         <h2>
           {make} <span>{model}</span>, {year}

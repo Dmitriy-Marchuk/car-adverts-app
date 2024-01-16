@@ -1,12 +1,17 @@
 import { useState } from "react";
 import Select from "react-select";
+import { useDispatch } from "react-redux";
+
+import {
+  setModel as setCarModel,
+  setPricePerHour as setCarPricePerHour,
+  setMinMileage as setCarMinMileage,
+  setMaxMileage as setCarMaxMileage,
+} from "redux/carFilters/carFiltersSlice";
 
 import carNames from "services/makes.json";
 import pricePerHourOptions from "services/pricePerHourOptions";
-import {
-  handleMaxMileageChange,
-  handleMinMileageChange,
-} from "Utils/minMaxMileage";
+import { handleMileageChange } from "Utils/minMaxMileage";
 
 import {
   CarMilageWrapper,
@@ -21,10 +26,12 @@ import {
 } from "Components/SearchForm/SearchForm.styled";
 
 const SearchForm = () => {
-  const [selectedCar, setSelectedCar] = useState(null);
-  const [selectedPricePerHour, setselectedPricePerHour] = useState(null);
-  const [minMileage, setMinMileage] = useState("");
-  const [maxMileage, setMaxMileage] = useState("");
+  const [selectedModel, setSelectedModel] = useState(null);
+  const [selectedPricePerHour, setSelectedPricePerHour] = useState(null);
+  const [selectedMinMileage, setSelectedMinMileage] = useState("");
+  const [selectedMaxMileage, setSelectedMaxMileage] = useState("");
+
+  const dispatch = useDispatch();
 
   const carOptions = carNames.map((make) => ({
     value: make,
@@ -32,22 +39,25 @@ const SearchForm = () => {
   }));
 
   const handleCarChange = (selectedOption) => {
-    setSelectedCar(selectedOption);
+    setSelectedModel(selectedOption);
   };
-  const handleMonthlyPriceChange = (selectedOption) => {
-    setselectedPricePerHour(selectedOption);
+  const handlePriceChange = (selectedOption) => {
+    setSelectedPricePerHour(selectedOption);
   };
 
   const handleSearch = (e) => {
     e.preventDefault();
-    const formData = {
-      selectedCar,
-      selectedPricePerHour,
-      minMileage,
-      maxMileage,
-    };
-
-    console.log(formData);
+    if (
+      selectedModel !== null ||
+      selectedPricePerHour !== null ||
+      selectedMinMileage !== "" ||
+      selectedMaxMileage !== ""
+    ) {
+      dispatch(setCarModel(selectedModel));
+      dispatch(setCarPricePerHour(selectedPricePerHour));
+      dispatch(setCarMinMileage(selectedMinMileage));
+      dispatch(setCarMaxMileage(selectedMaxMileage));
+    } else return console.log("Please select at least one parameter");
   };
 
   return (
@@ -58,7 +68,7 @@ const SearchForm = () => {
           styles={selectCarStyles}
           id="car-select"
           options={carOptions}
-          value={selectedCar}
+          value={selectedModel}
           onChange={handleCarChange}
           isSearchable={true}
           placeholder="Enter the text"
@@ -66,13 +76,13 @@ const SearchForm = () => {
         />
       </InputWrapper>
       <InputWrapper>
-        <StyledLabel htmlFor="price-monthly">Price/ 1 hour</StyledLabel>
+        <StyledLabel htmlFor="price-monthly">Price / 1 hour</StyledLabel>
         <Select
           styles={selectMonthlyPriceStyles}
           id="price-monthly"
           options={pricePerHourOptions}
           value={selectedPricePerHour}
-          onChange={handleMonthlyPriceChange}
+          onChange={handlePriceChange}
           isSearchable={false}
           placeholder="To $"
         />
@@ -84,15 +94,15 @@ const SearchForm = () => {
             type="text"
             id="min-price"
             placeholder="From"
-            value={minMileage}
-            onChange={(e) => handleMinMileageChange(e, setMinMileage)}
+            value={selectedMinMileage}
+            onChange={(e) => handleMileageChange(e, setSelectedMinMileage)}
           />
           <InputMilageToStyled
             type="text"
             id="max-price"
             placeholder="To"
-            value={maxMileage}
-            onChange={(e) => handleMaxMileageChange(e, setMaxMileage)}
+            value={selectedMaxMileage}
+            onChange={(e) => handleMileageChange(e, setSelectedMaxMileage)}
           />
         </CarMilageWrapper>
       </InputWrapper>

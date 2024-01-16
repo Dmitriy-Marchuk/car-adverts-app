@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import SearchForm from "Components/SearchForm/SearchForm";
 import CarCollection from "Components/CarCollection/CarCollection";
 
-import { Section } from "styles/common/general.styled";
+import { FindCarWrapper, Section } from "styles/common/general.styled";
 
 const FindCar = () => {
   return (
@@ -12,17 +12,10 @@ const FindCar = () => {
         <title>Find Car</title>
       </Helmet>
       <Section>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
+        <FindCarWrapper>
           <SearchForm />
           <CarCollection />
-        </div>
+        </FindCarWrapper>
       </Section>
     </>
   );

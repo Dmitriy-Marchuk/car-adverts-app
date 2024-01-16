@@ -41,10 +41,12 @@ export const AdditionalModal = styled.ul`
   line-height: 1.5;
   color: rgba(18, 20, 23, 0.5);
 
-  p {
+  li {
     padding-right: 6px;
     padding-left: 6px;
-    border-right: 1px solid rgba(18, 20, 23, 0.1);
+    &:not(:last-child) {
+      border-right: 1px solid rgba(18, 20, 23, 0.1);
+    }
   }
 `;
 
@@ -84,7 +86,7 @@ export const ConditionsRental = styled.div`
   }
 `;
 
-export const RentalButton = styled.button`
+export const RentalButton = styled.a`
   padding: 12px 50px;
   border: none;
   border-radius: 12px;
@@ -105,4 +107,10 @@ export const CloseModalButton = styled.button`
   right: 16px;
   border: none;
   background: none;
+  padding: 2px;
+
+  &:hover {
+    background-color: rgba(247, 247, 251, 0.8);
+    border-radius: 30%;
+  }
 `;

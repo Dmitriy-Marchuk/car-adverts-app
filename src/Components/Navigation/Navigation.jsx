@@ -4,7 +4,7 @@ const Navigation = () => {
   return (
     <NavWrapper>
       <NavItem to="/">Home</NavItem>
-      <NavItem to="/search">Find Car</NavItem>
+      <NavItem to="/catalog">Find Car</NavItem>
       <NavItem to="/favorites">Favorites</NavItem>
     </NavWrapper>
   );

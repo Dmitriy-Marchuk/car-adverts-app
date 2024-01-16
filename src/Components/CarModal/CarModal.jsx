@@ -1,5 +1,5 @@
 import closeIcon from "images/close-icon.svg";
-import NoImage from "images/no-image.jpeg";
+// import NoImage from "images/no-image.jpeg";
 
 import {
   AdditionalModal,
@@ -44,18 +44,18 @@ const CarModal = ({ car, toggleModal }) => {
       style={{
         overlay: {
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          overflowY: "auto",
           padding: "20px 0",
+          overflowY: "auto",
         },
       }}
-      isOpen={toggleModal}
+      isOpen={true}
       onRequestClose={toggleModal}
     >
       <CloseModalButton onClick={toggleModal}>
         <img src={closeIcon} alt="Close button" />
       </CloseModalButton>
-      {/* <ModalImage src={car.img || "NoImage"} /> */}
-      <ModalImage src={NoImage} />
+      <ModalImage src={car.img || "NoImage"} />
+      {/* <ModalImage src={NoImage} /> */}
       <ModalHead>
         {make} <span>{model}</span>, {year}
       </ModalHead>
@@ -126,7 +126,7 @@ const CarModal = ({ car, toggleModal }) => {
           </p>
         </li>
       </ConditionsRental>
-      <RentalButton>Rental car</RentalButton>
+      <RentalButton href="tel:+380730000000">Rental car</RentalButton>
     </ModalWrapped>
   );
 };
