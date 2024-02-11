@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/car-adverts-app/static/css/main.63199b6a.css",
+    "main.js": "/car-adverts-app/static/js/main.2c49dcec.js",
+    "index.html": "/car-adverts-app/index.html",
+    "static/media/fav-icon.svg": "/car-adverts-app/static/media/fav-icon.65b543ecd6fd2173cb079f5fd34ed0ff.svg",
+    "static/media/close-icon.svg": "/car-adverts-app/static/media/close-icon.a356a9d23b0c95a1f71eded679de3c0e.svg",
+    "main.63199b6a.css.map": "/car-adverts-app/static/css/main.63199b6a.css.map",
+    "main.2c49dcec.js.map": "/car-adverts-app/static/js/main.2c49dcec.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.63199b6a.css",
+    "static/js/main.2c49dcec.js"
+  ]
+}
