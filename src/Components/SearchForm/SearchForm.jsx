@@ -76,7 +76,7 @@ const SearchForm = () => {
         />
       </InputWrapper>
       <InputWrapper>
-        <StyledLabel htmlFor="price-monthly">Price / 1 hour</StyledLabel>
+        <StyledLabel htmlFor="price-monthly">Max Price / 1 hour</StyledLabel>
         <Select
           styles={selectMonthlyPriceStyles}
           id="price-monthly"

@@ -1,12 +1,5 @@
 import { axios } from "services/axiosClient";
 
-// export const getFetchCollection =
-//   ({ page, perPage }) =>
-//   () => {
-//     axios.get("/", {
-//       params: { page, perPage },
-//     });
-//   };
 export const getFetchCollection = ({ page, perPage }) => {
   return axios.get("/", {
     params: { page, limit: perPage },
