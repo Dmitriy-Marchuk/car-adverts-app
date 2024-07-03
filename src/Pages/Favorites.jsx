@@ -1,4 +1,7 @@
+import { CarCollectionWrapper } from "Components/CarCollection/CarCollection.styled";
+import FavoritesCollection from "Components/FavoritesCollection/FavoritesCollection";
 import { Helmet } from "react-helmet";
+import { Section } from "styles/common/general.styled";
 
 const Favorites = () => {
   return (
@@ -6,7 +9,11 @@ const Favorites = () => {
       <Helmet>
         <title>Favorite</title>
       </Helmet>
-      <>Favorite</>
+      <Section>
+        <CarCollectionWrapper>
+          <FavoritesCollection />
+        </CarCollectionWrapper>
+      </Section>
     </>
   );
 };

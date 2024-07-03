@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import SearchForm from "Components/SearchForm/SearchForm";
 import CarCollection from "Components/CarCollection/CarCollection";
 
-import { FindCarWrapper, Section } from "styles/common/general.styled";
+import { CarCollectionWrapper, Section } from "styles/common/general.styled";
 
 const FindCar = () => {
   return (
@@ -12,10 +12,10 @@ const FindCar = () => {
         <title>Find Car</title>
       </Helmet>
       <Section>
-        <FindCarWrapper>
+        <CarCollectionWrapper>
           <SearchForm />
           <CarCollection />
-        </FindCarWrapper>
+        </CarCollectionWrapper>
       </Section>
     </>
   );

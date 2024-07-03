@@ -36,7 +36,7 @@ const CarItem = ({ car, toggleFavoriteCar }) => {
     <CarItemWrapper>
       <StyledHeartIcon
         isFavorite={car.isFavorite}
-        onClick={() => toggleFavoriteCar(id)}
+        onClick={() => toggleFavoriteCar(car)}
       />
       <CarImage src={car.img || "/no-image.jpeg"} />
       <CarHead>

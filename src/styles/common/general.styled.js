@@ -7,7 +7,7 @@ export const Section = styled.section`
   }
 `;
 
-export const FindCarWrapper = styled.div`
+export const CarCollectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -5,7 +5,7 @@ import {
   CarCollectionWrapper,
   LoadMoreBtn,
 } from "Components/CarCollection/CarCollection.styled";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   selectModel,
   selectPricePerHour,
@@ -14,6 +14,11 @@ import {
 } from "redux/carFilters/selectors";
 
 import { useQuery } from "@tanstack/react-query";
+import {
+  removeFavorite,
+  setFavorite,
+} from "redux/carFavorites/carFavoritesSlice";
+import { setCarCollection } from "redux/carCollection/carCollectionSlice";
 
 const CarCollection = () => {
   const [cars, setCars] = useState([]);
@@ -24,7 +29,6 @@ const CarCollection = () => {
   const model = useSelector(selectModel);
   const minMileage = useSelector(setMinMileage);
   const maxMileage = useSelector(setMaxMileage);
-
   const perPage = 12;
 
   const {
@@ -41,7 +45,6 @@ const CarCollection = () => {
       });
     },
   });
-  console.log(carsResponse);
   useEffect(() => {
     if (isLoadingCars || isErrorCars || !carsResponse?.length) return;
 
@@ -58,6 +61,8 @@ const CarCollection = () => {
     updateFilteredCars();
   }, [cars, pricePerHour, model, minMileage, maxMileage]);
 
+  const dispatch = useDispatch();
+
   const updateFilteredCars = () => {
     const filtered = cars.filter((car) => {
       const isModelMatch = !model || (model.value && car.make === model.value);
@@ -70,20 +75,26 @@ const CarCollection = () => {
       return isModelMatch && isPricePerHourMatch && isFilteredByPrice;
     });
     setFilteredCars(filtered);
+    dispatch(setCarCollection(filtered));
   };
 
-  const toggleFavoriteCar = (id) => {
-    if (!cars.length) return;
+  const toggleFavoriteCar = (carFav) => {
+    const carIndex = cars.findIndex((car) => car.id === carFav.id);
+    if (carIndex === -1) return;
 
-    const filteredCars = cars.map((car) => {
-      if (car.id !== id) return car;
-      return { ...car, isFavorite: !car.isFavorite };
+    const updatedCars = cars.map((car, index) => {
+      if (index === carIndex) {
+        return { ...car, isFavorite: !car.isFavorite };
+      }
+      return car;
     });
 
-    setCars(filteredCars);
+    const updatedCarsString = JSON.stringify(updatedCars);
+    localStorage.setItem("updatedCars", updatedCarsString);
+
+    setCars(updatedCars);
   };
 
-  console.log("cars", cars);
   return (
     <>
       <CarCollectionWrapper>
