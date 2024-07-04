@@ -1,23 +1,19 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useDispatch, useSelector } from "react-redux";
+
 import getFetchCollection from "services/getApi";
 import CarItem from "Components/CarItem/CarItem";
 import {
   CarCollectionWrapper,
   LoadMoreBtn,
 } from "Components/CarCollection/CarCollection.styled";
-import { useDispatch, useSelector } from "react-redux";
 import {
   selectModel,
   selectPricePerHour,
   setMaxMileage,
   setMinMileage,
 } from "redux/carFilters/selectors";
-
-import { useQuery } from "@tanstack/react-query";
-import {
-  removeFavorite,
-  setFavorite,
-} from "redux/carFavorites/carFavoritesSlice";
 import { setCarCollection } from "redux/carCollection/carCollectionSlice";
 
 const CarCollection = () => {
@@ -31,6 +27,8 @@ const CarCollection = () => {
   const maxMileage = useSelector(setMaxMileage);
   const perPage = 12;
 
+  const dispatch = useDispatch();
+
   const {
     data: carsResponse,
     isLoading: isLoadingCars,
@@ -40,15 +38,26 @@ const CarCollection = () => {
     queryFn: () => getFetchCollection({ page, perPage }),
 
     select: (res) => {
+      const storedCars = JSON.parse(localStorage.getItem("updatedCars")) || [];
       return res.data.map((car) => {
-        return { ...car, isFavorite: false };
+        const storedCar = storedCars.find(
+          (storedCar) => storedCar.id === car.id
+        );
+        return { ...car, isFavorite: storedCar ? storedCar.isFavorite : false };
       });
     },
   });
   useEffect(() => {
+    setCars([]);
+  }, []);
+  useEffect(() => {
     if (isLoadingCars || isErrorCars || !carsResponse?.length) return;
 
-    setCars((prevCars) => [...prevCars, ...carsResponse]);
+    const newCars = carsResponse.filter(
+      (newCar) => !cars.some((car) => car.id === newCar.id)
+    );
+
+    setCars((prevCars) => [...prevCars, ...newCars]);
   }, [carsResponse, isErrorCars, isLoadingCars]);
 
   const loadMoreCars = () => {
@@ -60,8 +69,6 @@ const CarCollection = () => {
   useEffect(() => {
     updateFilteredCars();
   }, [cars, pricePerHour, model, minMileage, maxMileage]);
-
-  const dispatch = useDispatch();
 
   const updateFilteredCars = () => {
     const filtered = cars.filter((car) => {
@@ -93,6 +100,7 @@ const CarCollection = () => {
     localStorage.setItem("updatedCars", updatedCarsString);
 
     setCars(updatedCars);
+    updateFilteredCars();
   };
 
   return (
