@@ -1,5 +1,4 @@
 import closeIcon from "images/close-icon.svg";
-// import NoImage from "images/no-image.jpeg";
 
 import {
   AdditionalModal,
@@ -55,7 +54,6 @@ const CarModal = ({ car, toggleModal }) => {
         <img src={closeIcon} alt="Close button" />
       </CloseModalButton>
       <ModalImage src={car.img || "NoImage"} />
-      {/* <ModalImage src={NoImage} /> */}
       <ModalHead>
         {make} <span>{model}</span>, {year}
       </ModalHead>

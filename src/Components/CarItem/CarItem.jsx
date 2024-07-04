@@ -10,8 +10,6 @@ import {
   StyledHeartIcon,
 } from "./CarItem.styled";
 
-// import NoImage from "images/no-image.jpeg";
-
 const CarItem = ({ car, toggleFavoriteCar }) => {
   const {
     make,
