@@ -6,6 +6,10 @@ export const HeroWrapper = styled.div`
   align-items: center;
   margin-top: 30px;
 
+  @media (max-width: 768px) {
+    padding: 0 30px;
+  }
+
   h1 {
     margin-bottom: 30px;
     text-align: center;

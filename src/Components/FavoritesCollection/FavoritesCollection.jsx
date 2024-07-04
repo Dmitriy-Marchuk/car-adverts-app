@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CarItem from "Components/CarItem/CarItem";
+import { CarCollectionWrapper } from "Components/CarCollection/CarCollection.styled";
 
 const FavoritesCollection = () => {
   const [favoriteCars, setFavoriteCars] = useState([]);
@@ -26,15 +27,21 @@ const FavoritesCollection = () => {
 
   return (
     <>
-      {favoriteCars.length === 0 ? (
-        <p>There are no favorites yet, add something</p>
-      ) : (
-        favoriteCars.map((car) => (
-          <CarItem car={car} key={car.id} toggleFavoriteCar={toggleFavoriteCar}>
-            {car.id}
-          </CarItem>
-        ))
-      )}
+      <CarCollectionWrapper>
+        {favoriteCars.length === 0 ? (
+          <p>There are no favorites yet, add something</p>
+        ) : (
+          favoriteCars.map((car) => (
+            <CarItem
+              car={car}
+              key={car.id}
+              toggleFavoriteCar={toggleFavoriteCar}
+            >
+              {car.id}
+            </CarItem>
+          ))
+        )}
+      </CarCollectionWrapper>
     </>
   );
 };

@@ -57,7 +57,7 @@ const SearchForm = () => {
       dispatch(setCarPricePerHour(selectedPricePerHour));
       dispatch(setCarMinMileage(selectedMinMileage));
       dispatch(setCarMaxMileage(selectedMaxMileage));
-    } else return console.log("Please select at least one parameter");
+    } else return alert("Please select at least one parameter");
   };
 
   return (
