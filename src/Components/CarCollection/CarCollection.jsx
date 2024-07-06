@@ -121,7 +121,7 @@ const CarCollection = () => {
           />
         ))}
       </CarCollectionWrapper>
-      {hasMoreCars && (
+      {hasMoreCars && filteredCars.length >= perPage && (
         <LoadMoreBtn onClick={loadMoreCars}>Load More</LoadMoreBtn>
       )}
     </>
