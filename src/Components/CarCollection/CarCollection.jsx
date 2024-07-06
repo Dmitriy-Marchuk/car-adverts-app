@@ -20,6 +20,7 @@ const CarCollection = () => {
   const [cars, setCars] = useState([]);
   const [page, setPage] = useState(1);
   const [filteredCars, setFilteredCars] = useState([]);
+  const [hasMoreCars, setHasMoreCars] = useState(true);
 
   const pricePerHour = useSelector(selectPricePerHour);
   const model = useSelector(selectModel);
@@ -47,9 +48,11 @@ const CarCollection = () => {
       });
     },
   });
+
   useEffect(() => {
     setCars([]);
   }, []);
+
   useEffect(() => {
     if (isLoadingCars || isErrorCars || !carsResponse?.length) return;
 
@@ -58,12 +61,16 @@ const CarCollection = () => {
     );
 
     setCars((prevCars) => [...prevCars, ...newCars]);
+
+    if (carsResponse.length < perPage) {
+      setHasMoreCars(false);
+    } else {
+      setHasMoreCars(true);
+    }
   }, [carsResponse, isErrorCars, isLoadingCars]);
 
   const loadMoreCars = () => {
-    const nextPage = page + 1;
-
-    setPage(nextPage);
+    setPage((prevPage) => prevPage + 1);
   };
 
   useEffect(() => {
@@ -114,13 +121,9 @@ const CarCollection = () => {
           />
         ))}
       </CarCollectionWrapper>
-      {filteredCars.length !== null &&
-        filteredCars.length > 0 &&
-        filteredCars.length % 12 === 0 && (
-          <LoadMoreBtn onClick={() => loadMoreCars(page, perPage)}>
-            Load More
-          </LoadMoreBtn>
-        )}
+      {hasMoreCars && (
+        <LoadMoreBtn onClick={loadMoreCars}>Load More</LoadMoreBtn>
+      )}
     </>
   );
 };
